@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<title>
+			vidja: the simple video sharer
+		</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js">
+</script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js">
+</script>
+		<link rel="stylesheet" href="fileuploader.css" type="text/css">
+		<link rel="stylesheet" href="style.css" type="text/css">
+	</head>
+	<body>
+		<div id="container">
+			<div id="smallerBox">
+				<div id="logo">
+					vidja
+				</div>
+				<div id="slogan">
+					jeopardize your political career!
+				</div>
+				<div id="video-uploader">
+					<noscript>please enable javascript to use vidja!</noscript>
+				</div>
+				<div id="accordion">
+					<h3>
+						What is this? I don't even
+					</h3>
+					<div>
+						<p>
+							I'm glad you asked!
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				by using vidja, you are agreeing to the <a href="#">terms of service</a><br>
+				<a href="#">about</a> <a href="#">contact</a> &copy; 2010 the planeteers
+			</div>
+		</div><script src="fileuploader.js" type="text/javascript">
+</script><script type="text/javascript">
+function createUploader(){            
+				var uploader = new qq.FileUploader({
+						element: document.getElementById('video-uploader'),
+						action: '/upload',
+						sizeLimit: 500 * 1024 * 1024,
+						allowedExtensions: ['mov','mp4'],
+						onComplete: function(id, fileName, responseJSON){
+							document.getElementById('response').innerHTML="Video will be available <a href='/v/"+responseJSON.b36id+"'>here<\/a> once it's finished encoding.";
+							return true;
+						}
+				});           
+			}
+			window.onload = createUploader; 
+
+			$(function() {
+					$( "#accordion" ).accordion({
+						collapsible: true,
+						active: false
+					});
+				});
+		</script>
+	</body>
+</html>

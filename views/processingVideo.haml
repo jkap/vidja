@@ -1,0 +1,29 @@
+#logo.left
+	%a.ignoreLinkColor{:href=>"/"}vidja!
+#smallerBox
+	%h2
+		Woah there, cowboy!
+	%p
+		This video's still processing. Give it time. It'll be done soon enough.
+	%p
+		%img{:src => '/ajax-loader.gif'}
+	%p
+		This page will not auto-refresh. Feel free to do at will.
+	%p
+		MP4 Status:
+		=@mp4response.body['current_event']
+		at
+		=(@mp4response.body['progress'].to_f * 100).round / 100
+		percent
+	%p
+		OGV Status:
+		=@ogvresponse.body['current_event']
+		at
+		=(@ogvresponse.body['progress'].to_f * 100).round / 100
+		percent
+	%p
+		WebM Status:
+		=@webmresponse.body['current_event']
+		at
+		=(@webmresponse.body['progress'].to_f * 100).round / 100
+		percent

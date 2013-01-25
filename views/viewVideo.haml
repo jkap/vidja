@@ -1,0 +1,28 @@
+#logo.left
+	%a.ignoreLinkColor{:href=>"/"}vidja!
+#smallerBox
+	/ Begin VideoJS
+	.video-js-box
+		/ Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody
+		%video.video-js{:preload => "", :controls => "", :height => "480", :poster => "https://vidja.s3.amazonaws.com/#{@video.id}/frame_0000.png", :width => "640"}
+			%source{:src => "https://vidja.s3.amazonaws.com/#{@video.id}/#{@video.b36id}.mp4", :type => "video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\""}
+			%source{:src => "https://vidja.s3.amazonaws.com/#{@video.id}/#{@video.b36id}.webm", :type => "video/webm; codecs=\"vp8, vorbis\""}
+			%source{:src => "https://vidja.s3.amazonaws.com/#{@video.id}/#{@video.b36id}.ogv", :type => "video/ogg; codecs=\"theora, vorbis\""}
+				/ Flash Fallback. Use any flash video player here. Make sure to keep the vjs-flash-fallback class.
+				%object.vjs-flash-fallback{:data => "http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf", :height => "480", :type => "application/x-shockwave-flash", :width => "640"}
+					%param{:name => "movie", :value => "http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf"}/
+					%param{:name => "allowfullscreen", :value => "true"}/
+					%param{:name => "flashvars", :value => "config={\"playlist\":[\"https://vidja.s3.amazonaws.com/#{@video.id}/frame_0000.png\", {\"url\": \"https://vidja.s3.amazonaws.com/#{@video.id}/#{@video.b36id}.mp4\",\"autoPlay\":false,\"autoBuffering\":false}]}"}/
+					/ Image Fallback. Typically the same as the poster image.
+					%img{:alt => "Poster Image", :height => "480", :src => "https://vidja.s3.amazonaws.com/#{@video.id}/frame_0000.png", :title => "No video playback capabilities.", :width => "640"}/
+		/ Download links provided for devices that can't play video in the browser.
+		%p.vjs-no-video
+	/ End VideoJS
+	%p
+		Link to this page:
+		%input{:type=>'text', :value=>"http://thevidja.com/v/#{@video.b36id}"}
+:javascript
+	$("input[type=text]").focus(function(){
+			// Select field contents
+			this.select();
+	});

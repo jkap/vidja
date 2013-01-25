@@ -1,0 +1,52 @@
+#smallerBox
+	#logo
+		vidja!
+	#slogan=@slogan
+	#video-uploader
+		%noscript please enable javascript to use vidja!
+	#response
+		:javascript
+			if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ //test for MSIE x.x;
+			document.write("We don't really support IE. May I suggest Chrome or Firefox?")
+			}
+	#accordion
+		%h3
+			What is this? I don't even
+		%div
+			%p I'm glad you asked!
+			%p Vidja is the simple video sharing site made by The Planeteers for Rails Rumble.
+			%p We allow any video file up to 500mb. We support almost every format there is.
+			%p
+				Want to know more?
+				%a{:href => "/about"} About us
+
+	%script{:src => "fileuploader.js", :type => "text/javascript"}
+	:javascript
+		function createUploader(){						
+					var uploader = new qq.FileUploader({
+							element: document.getElementById('video-uploader'),
+							action: '/upload',
+							sizeLimit: 500 * 1024 * 1024,
+							allowedExtensions: [],
+							onProgress: function(id, fileName, loaded, total){
+								document.title = "vidja! uploading: " + Math.round(loaded / total * 100) + '%!';
+							},
+							onComplete: function(id, fileName, responseJSON){
+								document.getElementById('response').innerHTML="Video will be available <a href='/v/"+responseJSON.b36id+"'>here<\/a> once it's finished encoding.";
+								document.title = "vidja! uploading: done!"
+								return true;
+							},
+							onCancel: function(id, fileName){
+								document.title = "vidja! uploading: cancelled!"
+							}
+					});						
+				}
+				window.onload = createUploader; 
+
+				$(function() {
+						$( "#accordion" ).accordion({
+							collapsible: true,
+							active: false
+						});
+					});
+	

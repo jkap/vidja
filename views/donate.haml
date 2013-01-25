@@ -1,0 +1,19 @@
+#logo.left
+	%a.ignoreLinkColor{:href=>"/"}vidja!
+#smallerBox
+	%h2
+		So here's the deal
+	%p
+		I'm absolutely elated by how popular Vidja has become. In one week, we've served over 319 gigabytes worth of video! That's a ton, and way more than any of us could have expected. Here's the deal, though: running this site is starting look expensive. I want to keep it online because it's filling a needed (in my opinion) void. Everyone who's tried it loves it and I want to keep it available for these people.
+	%p
+		We're going to be adding users and paid accounts soon with all sorts of great features (HD upload, higher upload limit, etc) and our free accounts will remain the same as they are right now. That will help offset our costs somewhat, but we still need to make some money quickly to keep the site afloat for the next month.
+	%p
+		Here's how we want to do that: donations. If you donate any amount, you will automatically receive 6 months worth of pro account. If the pro accounts end up costing less than what you donated, we'll credit you the difference. You'll get 6 months free + whatever else you paid for!
+	%p
+		I don't want to beg, but we need the money. We need your help to keep Vidja alive. So help us, please.
+	%p
+		%form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post"}
+			%input{:name => "cmd", :type => "hidden", :value => "_s-xclick"}/
+			%input{:name => "hosted_button_id", :type => "hidden", :value => "46RGTMJ3Q9P94"}/
+			%input{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :name => "submit", :src => "https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif", :type => "image"}/
+			%img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypal.com/en_US/i/scr/pixel.gif", :width => "1"}/
