@@ -82,7 +82,7 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    rack (1.2.1)
+    rack (1.6.12)
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
