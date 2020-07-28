@@ -70,7 +70,7 @@ GEM
     fastercsv (1.5.3)
     haml (3.0.22)
     highline (1.6.1)
-    json (1.4.6)
+    json (2.3.0)
     json_pure (1.4.6)
     mime-types (1.16)
     monkey-lib (0.5.4)
